@@ -6,8 +6,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
-public class ProperiesManager {
-	public static Properties getPropertiesFromFile(File path) {
+public abstract class ProperiesManager {
+	
+	public static Properties getPropertiesFromFile(File path) throws NullPointerException{
 		InputStream inputStream;
 		Properties props = null;
 		try {
@@ -16,8 +17,9 @@ public class ProperiesManager {
 			props.load(inputStream);			
 		} catch ( IOException e1) {
 			e1.printStackTrace();
+			throw new NullPointerException();
 		}
 
-		return null;
+		return props;
 	}
 }
